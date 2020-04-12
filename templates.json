@@ -766,16 +766,26 @@
   {
     "type": "stack",
     "title": "Wordpress",
-    "description": "Wordpress setup with a MySQL database",
+    "description": "Wordpress setup with a MySQL database and redis",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
     "categories": ["CMS"],
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
     "repository": {
-      "url": "https://github.com/portainer/templates",
+      "url": "https://github.com/fabianhick/templates/",
       "stackfile": "stacks/wordpress/docker-stack.yml"
     },
     "env": [
+      {
+        "name": "CONTAINER_NAME",
+        "label": "Name of the service",
+        "description": "Name of the service (must be unique!)"
+      },
+      {
+        "name": "DOMAIN",
+        "label": "Domain",
+        "description": "Domain used by Wordpress instance."
+      },
       {
         "name": "MYSQL_ROOT_PASSWORD",
         "label": "Database root password",
