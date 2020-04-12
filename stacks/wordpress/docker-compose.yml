@@ -45,5 +45,5 @@ volumes:
 networks:
   proxy:
     external:
-      name: web
+      name: proxy
   default:
