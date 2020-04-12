@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
    db:
@@ -13,6 +13,8 @@ services:
        MYSQL_PASSWORD: wordpress
 
    wordpress:
+     depends_on:
+       - db
      image: wordpress:latest
      ports:
        - 80
@@ -21,6 +23,21 @@ services:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_NAME: wordpress
+     labels:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${CONTAINER_NAME}.entrypoints=http"
+      - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${CONTAINER_NAME}.middlewares=https-redirect@file"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.entrypoints=https"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.tls=true"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.tls.certresolver=http"
+      - "traefik.http.routers.portainer-secure.service=${CONTAINER_NAME}"
+      - "traefik.docker.network=proxy"       
+   redis:
+     image: "redis:alpine"
 
 volumes:
     db_data:
