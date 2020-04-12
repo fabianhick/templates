@@ -784,8 +784,19 @@
       "stackfile": "stacks/wordpress/docker-stack.yml"
     },
     "env": [
+    "env": [
       {
-        "name": "MYSQL_DATABASE_PASSWORD",
+        "name": "CONTAINER_NAME",
+        "label": "Name of the service",
+        "description": "Name of the service (must be unique!)"
+      },
+      {
+        "name": "DOMAIN",
+        "label": "Domain",
+        "description": "Domain used by Wordpress instance."
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
         "label": "Database root password",
         "description": "Password used by the MySQL root user."
       }
