@@ -32,12 +32,13 @@ services:
        - "traefik.http.routers.${CONTAINER_NAME}-secure.tls=true"
        - "traefik.http.routers.${CONTAINER_NAME}-secure.tls.certresolver=http"
        - "traefik.http.routers.${CONTAINER_NAME}-secure.service=${CONTAINER_NAME}"
-       - "traefik.docker.network=proxy"    
-     networks:
-       - proxy
-  
+       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+       - "traefik.docker.network=proxy"      
    redis:
      image: "redis:alpine"
 
 volumes:
     db_data:
+networks:
+  proxy:
+    external: true
