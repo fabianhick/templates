@@ -44,5 +44,6 @@ volumes:
     db_data:
 networks:
   proxy:
-    external: true
+    external:
+      name: web
   default:
