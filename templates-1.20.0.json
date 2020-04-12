@@ -780,12 +780,22 @@
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
     "repository": {
-      "url": "https://github.com/portainer/templates",
+      "url": "https://github.com/fabianhick/templates",
       "stackfile": "stacks/wordpress/docker-stack.yml"
     },
     "env": [
       {
-        "name": "MYSQL_DATABASE_PASSWORD",
+        "name": "CONTAINER_NAME",
+        "label": "Name of the service",
+        "description": "Name of the service (must be unique!)"
+      },
+      {
+        "name": "DOMAIN",
+        "label": "Domain",
+        "description": "Domain used by Wordpress instance."
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
         "label": "Database root password",
         "description": "Password used by the MySQL root user."
       }
@@ -800,12 +810,22 @@
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
     "repository": {
-      "url": "https://github.com/portainer/templates",
+      "url": "https://github.com/fabianhick/templates",
       "stackfile": "stacks/wordpress/docker-compose.yml"
     },
     "env": [
       {
-        "name": "MYSQL_DATABASE_PASSWORD",
+        "name": "CONTAINER_NAME",
+        "label": "Name of the service",
+        "description": "Name of the service (must be unique!)"
+      },
+      {
+        "name": "DOMAIN",
+        "label": "Domain",
+        "description": "Domain used by Wordpress instance."
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
         "label": "Database root password",
         "description": "Password used by the MySQL root user."
       }
